@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="control-buttons">
+        <span>Start Game</span>
+    </div>
+    <div class="info-container">
+        <div class="name">
+            Hello : <span></span>
+        </div>
+        <div class="tries">
+            Wrong Tries : <span>0</span>
+        </div>
+    </div>
+    <div class="display">
+        <div class="night">
+            <span><img src="20.PNG" alt=""></span>
+        </div>
+        <div class="light">
+            <span><img src="22.PNG" alt=""></span>
+        </div>
+    </div>
+
+    <div class="memory-game-blocks">
+        <div class="game-block" data-anime="white-bird">
+            <div class="face front"></div>
+            <div class="face back">
+                <img src="1.png" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-anime="white-bird">
+            <div class="face front"></div>
+            <div class="face back">
+                <img src="1.png" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-anime="crocodile">
+            <div class="face front"></div>
+            <div class="face back">
+                <img src="2.png" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-anime="crocodile">
+            <div class="face front"></div>
+            <div class="face back">
+                <img src="2.png" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-anime="coma">
+            <div class="face front"></div>
+            <div class="face back">
+                <img src="3.jpg" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-anime="coma">
+            <div class="face front"></div>
+            <div class="face back">
+                <img src="3.jpg" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-anime="black-bird">
+            <div class="face front"></div>
+            <div class="face back">
+                <img src="4.png" alt="">
+            </div>
+        </div><div class="game-block" data-anime="black-bird">
+            <div class="face front"></div>
+            <div class="face back">
+                <img src="4.png" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-anime="x-drick">
+            <div class="face front"></div>
+            <div class="face back">
+                <img src="5.jpg" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-anime="x-drick">
+            <div class="face front"></div>
+            <div class="face back">
+                <img src="5.jpg" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-anime="ace">
+            <div class="face front"></div>
+            <div class="face back">
+                <img src="6.jpg" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-anime="ace">
+            <div class="face front"></div>
+            <div class="face back">
+                <img src="6.jpg" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-anime="zoro">
+            <div class="face front"></div>
+            <div class="face back">
+                <img src="7.png" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-anime="zoro">
+            <div class="face front"></div>
+            <div class="face back">
+                <img src="7.png" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-anime="nami">
+            <div class="face front"></div>
+            <div class="face back">
+                <img src="8.png" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-anime="nami">
+            <div class="face front"></div>
+            <div class="face back">
+                <img src="8.png" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-anime="law">
+            <div class="face front"></div>
+            <div class="face back">
+                <img src="9.jpg" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-anime="law">
+            <div class="face front"></div>
+            <div class="face back">
+                <img src="9.jpg" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-anime="okje">
+            <div class="face front"></div>
+            <div class="face back">
+                <img src="10.png" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-anime="okje">
+            <div class="face front"></div>
+            <div class="face back">
+                <img src="10.png" alt="">
+            </div>
+        </div>
+        <!-- <div class="game-block" data-anime="akayno">
+            <div class="face front"></div>
+            <div class="face back">
+                <img src="11.jpg" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-anime="akayno">
+            <div class="face front"></div>
+            <div class="face back">
+                <img src="11.jpg" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-anime="kyzaro">
+            <div class="face front"></div>
+            <div class="face back">
+                <img src="12.png" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-anime="kyzaro">
+            <div class="face front"></div>
+            <div class="face back">
+                <img src="12.png" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-anime="luffy">
+            <div class="face front"></div>
+            <div class="face back">
+                <img src="13.jpg" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-anime="luffy">
+            <div class="face front"></div>
+            <div class="face back">
+                <img src="13.jpg" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-anime="marco">
+            <div class="face front"></div>
+            <div class="face back">
+                <img src="14.jpg" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-anime="marco">
+            <div class="face front"></div>
+            <div class="face back">
+                <img src="14.jpg" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-anime="shanks">
+            <div class="face front"></div>
+            <div class="face back">
+                <img src="15.jpg" alt="">
+            </div>
+        </div>
+        <div class="game-block" data-anime="shanks">
+            <div class="face front"></div>
+            <div class="face back">
+                <img src="15.jpg" alt="">
+            </div>
+        </div> -->
+        
+
+        <audio id="sucess" src="sucess.m4a" preload="auto"></audio>
+        <audio id="fail" src="faill.m4a" preload="auto"></audio>
+    </div>
+    <script src="file.js"></script>
+</body>
+</html>
