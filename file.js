@@ -1,24 +1,24 @@
 // select the start game button
 var startgame = document.querySelector('.control-buttons span');
-startgame.onclick =function (){
+startgame.onclick = function () {
     //prompt ask for name
     let yourname = prompt('what`s your name')
     //if it empty
-    if(yourname == null || yourname == ""){
+    if (yourname == null || yourname == "") {
         document.querySelector('.info-container .name span').textContent = `Gest`
-    }else{
+    } else {
         document.querySelector('.info-container .name span').textContent = yourname
     }
-    blocks.forEach((block) =>{
+    blocks.forEach((block) => {
 
         block.classList.add('is-flipped');
-   
-       setTimeout(() =>{
-           block.classList.remove('is-flipped')
-           
-       },1000)
-   
-   });
+
+        setTimeout(() => {
+            block.classList.remove('is-flipped')
+
+        }, 1000)
+
+    });
 
     document.querySelector('.control-buttons').remove();
 
@@ -34,7 +34,7 @@ let blockscontainer = document.querySelector('.memory-game-blocks');
 let blocks = Array.from(blockscontainer.children);
 
 // create range of keys
-let orderrange =[...Array(blocks.length).keys()]
+let orderrange = [...Array(blocks.length).keys()]
 // let orderrange = Array.from(Array(20).keys())
 
 // shuffle function
@@ -42,14 +42,14 @@ shuffle(orderrange);
 
 
 //add order css property to game blocks
-blocks.forEach((block , index) =>{
-    block.style.order = orderrange[index] ;
-      
-// add click event
-block.addEventListener('click', function() {
-    //trigger the flip block function
-    flipblock(block)
-});
+blocks.forEach((block, index) => {
+    block.style.order = orderrange[index];
+
+    // add click event
+    block.addEventListener('click', function () {
+        //trigger the flip block function
+        flipblock(block)
+    });
 
 
 });
@@ -59,7 +59,7 @@ block.addEventListener('click', function() {
 
 
 // flip block function
-function flipblock(selectedblock){
+function flipblock(selectedblock) {
     //add class is-flipped
     selectedblock.classList.add('is-flipped');
 
@@ -68,35 +68,35 @@ function flipblock(selectedblock){
 
     // if theres two selected blocks
 
-    if(allflippedblocks.length === 2){
+    if (allflippedblocks.length === 2) {
 
         // stop clicking function
         stopclicking();
 
 
         // check matched block function
-        checkmatchedblocks(allflippedblocks[0] , allflippedblocks[1]);
+        checkmatchedblocks(allflippedblocks[0], allflippedblocks[1]);
 
     }
 }
 
 
 // stop clicking function
-function stopclicking(){
+function stopclicking() {
     //add class no clicking on main container
     blockscontainer.classList.add('no-clicking')
 
-    setInterval(()=>{
+    setInterval(() => {
         // remove class no clicking after the duration
         blockscontainer.classList.remove('no-clicking')
-    },duration);
+    }, duration);
 }
 
 // check matched block
-function checkmatchedblocks(firstblock , secondblock){
+function checkmatchedblocks(firstblock, secondblock) {
     let trieselement = document.querySelector('.info-container .tries span');
 
-    if(firstblock.dataset.anime === secondblock.dataset.anime){
+    if (firstblock.dataset.anime === secondblock.dataset.anime) {
 
         firstblock.classList.remove('is-flipped');
         secondblock.classList.remove('is-flipped');
@@ -106,10 +106,10 @@ function checkmatchedblocks(firstblock , secondblock){
 
         document.getElementById('sucess').play()
 
-    
 
-    }else{
-        trieselement.innerHTML = `${parseInt(trieselement.innerHTML) + 1} of 10 ` ;
+
+    } else {
+        trieselement.innerHTML = `${parseInt(trieselement.innerHTML) + 1} of 10 `;
 
         setTimeout(() => {
             firstblock.classList.remove('is-flipped');
@@ -118,7 +118,7 @@ function checkmatchedblocks(firstblock , secondblock){
 
         document.getElementById('fail').play()
 
-        if(parseInt(trieselement.innerHTML) > 9){
+        if (parseInt(trieselement.innerHTML) > 9) {
             location.reload();
             startgame.textContent = 'play agine'
 
@@ -128,15 +128,15 @@ function checkmatchedblocks(firstblock , secondblock){
 
 
 
-function shuffle(array){
+function shuffle(array) {
     //stting vars
-    let current = array.length ,
-        temp ,
+    let current = array.length,
+        temp,
         random
-    
+
     while (current > 0) {
         // get random number
-        random = Math.floor(Math.random()*current);
+        random = Math.floor(Math.random() * current);
 
         // decrese length by one
         current--;
@@ -149,7 +149,7 @@ function shuffle(array){
 
         //  3- random element = get element from stash
         array[random] = temp
-  
+
     }
     return array
 }
@@ -173,58 +173,44 @@ function shuffle(array){
 
 
 
+const nightmodeBtn = document.querySelector('.night'),
+    lightmodeBtn = document.querySelector('.light'),
+    text = document.querySelector('.info-container'),
+    tries = document.querySelector('.tries'),
+    body = document.querySelector('body');
 
 
-var nightmode = document.querySelector('.night span'),
-    lightmode = document.querySelector('.light span');
-
-window.onload = function(){
-    lightmode = document.querySelector('.light span').style.visibility = "hidden";
-}
-nightmode.onclick = function(){
-    if(document.querySelector('.info-container .tries').style.color = 'black'){
-        document.querySelector('.info-container .tries').style.backgroundColor = 'black';
-        document.querySelector('body').style.backgroundColor = 'black';
-        document.querySelector('.info-container .name').style.backgroundColor = 'black';
-        document.querySelector('.info-container .tries').style.color = 'white';
-        document.querySelector('body').style.color = 'white' ;
-        document.querySelector('.info-container .name').style.color = 'white';
-
-        document.querySelector('.night span').style.color = 'black';
-        document.querySelector('.light span').style.backgroundColor = 'white';
-        document.querySelector('.light span').style.color = 'black' ;
-
-        lightmode = document.querySelector('.light span').style.visibility = "visible";
-        
-        document.querySelector('.display .light span').style.right = '10px'
-        document.querySelector('.display .light span').style.top = '20px'
-        document.querySelector('.display .light span').style.height = '35px'
-
-        
-
-    }else {
-        
+window.onload = () => {
+    if (localStorage.getItem('mode') === 'dark') {
+        body.style.background = "black"
+        nightmodeBtn.style.display = "none"
+        text.style.color = "white"
+        tries.style.color = "white"
+    } else {
+        body.style.background = "white"
+        lightmodeBtn.style.display = "none"
+        text.style.color = "black"
+        tries.style.color = "black"
     }
 }
-lightmode.onclick = function(){
-    if(document.querySelector('body').style.backgroundColor = 'black'){
-        document.querySelector('.info-container .tries').style.backgroundColor = 'white';
-        document.querySelector('body').style.backgroundColor = 'white';
-        document.querySelector('.info-container .name').style.backgroundColor = 'white';
-        document.querySelector('.info-container .tries').style.color = 'black';
-        document.querySelector('body').style.color = 'black' ;
-        document.querySelector('.info-container .name').style.color = 'black';
 
-        document.querySelector('.night span').style.color = 'white';
-        document.querySelector('.light span').style.color = 'white' ;
+nightmodeBtn.addEventListener("click", () => {
+    body.style.background = "black"
+    nightmodeBtn.style.display = "none"
+    lightmodeBtn.style.display = "block"
+    text.style.color = "white"
+    tries.style.color = "white"
 
-        document.querySelector('.display .light span').style.desplay = 'hidden'
 
-        // document.querySelector('.display .light span').style.right = '10px'
-        // document.querySelector('.display .light span').style.top = '70px'
-        document.querySelector('.display .light span').style.visibility = 'hidden'
+    localStorage.setItem('mode', "dark")
+})
 
-    }else{
-        
-    }
-}
+lightmodeBtn.addEventListener("click", () => {
+    body.style.background = "white"
+    lightmodeBtn.style.display = "none"
+    nightmodeBtn.style.display = "block"
+    text.style.color = "black"
+    tries.style.color = "black"
+
+    localStorage.setItem('mode', "light")
+})
